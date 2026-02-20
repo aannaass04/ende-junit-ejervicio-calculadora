@@ -56,4 +56,27 @@ public class CalculadoraTest {
         assertEquals(OperacionNoValidaException.MSG, ex.getMessage());
 
     }
+
+    // @Test de division
+    @Test
+    void dividir() {
+
+        // Se realizan 6 pruebas y comprobamos si funciona
+        assertAll("Division",
+                // 1. Casos de división exacta (positivos)
+                () -> assertEquals(10, Calculadora.dividir(20, 2), "20 / 2 debe ser 10"),
+                () -> assertEquals(5, Calculadora.dividir(15, 3), "15 / 3 debe ser 5"),
+                
+                // 2. Casos con números negativos
+                () -> assertEquals(-5, Calculadora.dividir(-10, 2), "Negativo / Positivo debe ser negativo"),
+                () -> assertEquals(-4, Calculadora.dividir(12, -3), "Positivo / Negativo debe ser negativo"),
+                () -> assertEquals(3, Calculadora.dividir(-9, -3), "Negativo / Negativo debe ser positivo"),
+                
+                // 3. Cero dividido por un número
+                () -> assertEquals(0, Calculadora.dividir(0, 5), "0 dividido por cualquier número debe ser 0")
+
+        );
+    }
 }
+
+
