@@ -49,4 +49,4 @@
 | CP7 | Valores Límite | dividendo = MAX_VALUE | 2147483647 | 1 | 2147483647 |
 | CP8 | | dividendo = MIN_VALUE | -2147483648 | 1 | -2147483648 |
 
-No se han incluido valores fuera de los límites para el divisor ya que exceden el tamaño máximo de la variable (int) y Java no nos dejaría compilar la prueba.
+No se han incluido valores fuera de los límites para el divisor ya que los resultados exceden el tamaño máximo de la variable (int) y Java no nos dejaría compilar la prueba.
