@@ -63,18 +63,19 @@ public class CalculadoraTest {
 
         // Se realizan 6 pruebas y comprobamos si funciona
         assertAll("Division",
-                // 1. Casos de división exacta (positivos)
-                () -> assertEquals(10, Calculadora.dividir(20, 2), "20 / 2 debe ser 10"),
-                () -> assertEquals(5, Calculadora.dividir(15, 3), "15 / 3 debe ser 5"),
-                
-                // 2. Casos con números negativos
-                () -> assertEquals(-5, Calculadora.dividir(-10, 2), "Negativo / Positivo debe ser negativo"),
-                () -> assertEquals(-4, Calculadora.dividir(12, -3), "Positivo / Negativo debe ser negativo"),
-                () -> assertEquals(3, Calculadora.dividir(-9, -3), "Negativo / Negativo debe ser positivo"),
-                
-                // 3. Cero dividido por un número
-                () -> assertEquals(0, Calculadora.dividir(0, 5), "0 dividido por cualquier número debe ser 0")
+                // 1. Casos de división válida
+                () -> assertEquals(5, Calculadora.dividir(10,2), "10 / 2 debe ser 5"),
+                () -> assertEquals(-5, Calculadora.dividir(10, -2), "10 / -2 debe ser -5"),
+                () -> assertEquals(0, Calculadora.dividir(0, 5), "0 / 5 debe ser 0"),
+                () -> assertEquals(5, Calculadora.dividir(-10,-2), "-10 / -2 debe ser 5"),
+                () -> assertEquals(-5, Calculadora.dividir(-10,2), "-10 / 2 debe ser -5"),
 
+                // 2. Casos no validos
+                () -> assertThrows(OperacionNoValidaException.class, () -> Calculadora.dividir(10, 0), "No se puede dividir entre cero"),
+                
+                // 3. Valores límite
+                () -> assertEquals(2147483647, Calculadora.dividir(2147483647, 1), "2147483647 / 1 debe ser 2147483647"),
+                () -> assertEquals(-2147483648, Calculadora.dividir(-2147483648, 1), "-2147483648 / 1 debe ser 2147483647")
         );
     }
 }
